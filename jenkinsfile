@@ -1,19 +1,18 @@
-node {
+node ("$node") {
 
    stage('SCM') {
       // git clone
-	  git 'https://github.com/Ranganath-Github/game-of-life.git'
+	  git '$PROJECT_URL'
    }
    
    stage ('build the packages') {
       // mvn package
-	  sh 'mvn package'
+	  sh '$ACTIVITY'
    }
 
     stage ('archival') {
-     // archiving artifacts
+     // archiving arti_facts
 	 archive 'target/*.jar'
    }
 
 }
-

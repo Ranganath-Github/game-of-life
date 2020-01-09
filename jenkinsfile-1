@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+       stages {
+           stage('all activities'){
+               steps {
+                    git url: "$url", branch: "$branch"
+                    sh script: "$script", label: "$label"
+                    archiveArtifacts 'target/*.jar, onlyIfSuccessful: true'
+            }
+        }
+    }  
+}

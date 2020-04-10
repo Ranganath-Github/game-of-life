@@ -1,12 +1,12 @@
 node ("$node") {
 
    stage('SCM') {
-      // git clone for testing
+      // git clone for testing purpose
 	  git '$PROJECT_URL'
    }
    
    stage ('build the packages') {
-      // mvn package
+      // mvn package for testing purpose
 	  sh '$ACTIVITY'
    }
 

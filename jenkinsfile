@@ -1,12 +1,12 @@
 node ("$node") {
 
    stage('SCM') {
-      // git clone
+      // git clone for web hooks
 	  git '$PROJECT_URL'
    }
    
    stage ('build the packages') {
-      // mvn package
+      // mvn package web hooks
 	  sh '$ACTIVITY'
    }
 

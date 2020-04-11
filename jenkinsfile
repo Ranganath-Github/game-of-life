@@ -1,12 +1,12 @@
 node ("$node") {
 
    stage('SCM') {
-      // git clone
+      // git clone [this modification for webhook testing]
 	  git '$PROJECT_URL'
    }
    
    stage ('build the packages') {
-      // mvn package
+      // mvn package [this modification for webhook testing]
 	  sh '$ACTIVITY'
    }
 

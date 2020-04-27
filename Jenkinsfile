@@ -2,7 +2,7 @@ node {
     
     def buildNumber = BUILD_NUMBER
     stage('Clone') {
-        git 'https://github.com/wakaleo/game-of-life.git'
+        git 'https://github.com/Ranganath-Github/game-of-life.git'
     }
     
     stage('Build') {

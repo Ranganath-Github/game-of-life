@@ -1,5 +1,4 @@
-node {
-    
+node {    
     def buildNumber = BUILD_NUMBER
     stage('Clone') {
         git 'https://github.com/Ranganath-Github/game-of-life.git'
@@ -10,6 +9,6 @@ node {
     }
     
     stage('Build Docker Image') {
-      sh 'docker image build -t gameoflife:${buildNumber} .'
+      sh "docker image build -t dockerranganath/gameoflife:${buildNumber} ."
     }
 }

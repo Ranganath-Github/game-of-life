@@ -14,7 +14,7 @@ node {
     }
     
     stage('Docker Login') {
-      sh "docker login -u dockerranganath -p Docker@123"
+      sh "docker login -u $$$$$ -p #####"
     }
     
     stage('Docker push image') {

@@ -6,7 +6,7 @@ node {
     }
     
     stage('Docker pull image') {
-        sh "docker pulls nginx"
+        sh "docker pull nginx"
     }
     
     stage('build container and deploy the container') {

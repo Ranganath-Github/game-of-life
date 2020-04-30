@@ -2,7 +2,7 @@ node {
     
     def buildNumber = BUILD_NUMBER
     stage('Docker login') {
-        sh "docker login -u dockerranganath -p Docker@123"
+        sh "docker login -u ###### -p *****"
     }
     
     stage('Docker pull image') {

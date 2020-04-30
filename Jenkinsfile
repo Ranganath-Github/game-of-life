@@ -1,30 +1,18 @@
 node {
-
+    
     def buildNumber = BUILD_NUMBER
-    stage('Clone') {
-        git 'https://github.com/Ranganath-Github/game-of-life.git'
+    stage('Docker login') {
+        sh "docker login -u dockerranganath -p Docker@123"
     }
     
-    stage('Build') {
-        sh 'mvn clean install'
+    stage('Docker pull image') {
+        sh "docker pulls nginx"
     }
     
-    stage('Build Docker Image') {
-      sh "docker image build -t dockerranganath/gameoflife:${buildNumber} ."
-    }
-    
-    stage('Docker Login') {
-      sh "docker login -u $$$$$ -p #####"
-    }
-    
-    stage('Docker push image') {
-      sh "docker push dockerranganath/gameoflife:${buildNumber}"
-    }
-    
-    stage('Docker container creation') {
-      sshagent(['Docker_dev_SSH']) {
-       sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.37.78 docker rm -f javawebappcontainer || true"
-       sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.37.78 docker container run -d --name javawebappcontainer -p 8089:8080 dockerranganath/gameoflife:${buildNumber}"
+    stage('build container and deploy the container') {
+        sshagent(['Docker_Hub_SSH']) {
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.33.140 docker rm -f nginx${buildNumber} || true"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.33.140 docker container run -d --name nginx${buildNumber} -p 8084:80 nginx"
     }
   }
 }
